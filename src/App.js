@@ -3,6 +3,8 @@ import "./App.css";
 import Form from "./Form";
 import New from "./New";
 import Guage from "./Guage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   // const [count, setCount] = useState(10);
@@ -11,12 +13,21 @@ function App() {
   const [count2, setCount2] = useState(1);
   const [showComponent, toggleShow] = useState(true);
 
+  function makeAlert() {
+    toast("OMG", {
+      autoClose: 2000,
+      draggable: false
+    });
+  }
+
   return (
     <div>
       <div className="App">
+        <ToastContainer />
+        <button onClick={makeAlert}>Click for a wow</button>
         <button
           onClick={() => {
-            if (count1 != 3) {
+            if (count1 != 6) {
               setCount1(count1 + 1);
             }
             setCount2(count2 + 2);
