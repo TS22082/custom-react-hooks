@@ -5,6 +5,7 @@ import New from "./New";
 import Guage from "./Guage";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Parent from "./Parent";
 
 function App() {
   // const [count, setCount] = useState(10);
@@ -27,7 +28,7 @@ function App() {
         <button onClick={makeAlert}>Click for a wow</button>
         <button
           onClick={() => {
-            if (count1 != 6) {
+            if (count1 !== 6) {
               setCount1(count1 + 1);
             }
             setCount2(count2 + 2);
@@ -49,6 +50,9 @@ function App() {
         {showComponent ? <New /> : null}
 
         <Guage percent={count1 * 0.1} />
+        <Parent>
+          <h1>There it is</h1>
+        </Parent>
       </div>
     </div>
   );
