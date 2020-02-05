@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Form from "./Form";
+import New from "./New";
 
 function App() {
+  // const [count, setCount] = useState(10);
+
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
+  const [showComponent, toggleShow] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+      <div className="App">
+        <button
+          onClick={() => {
+            setCount1(count1 + 1);
+            setCount2(count2 + 2);
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          Click Me
+        </button>
+        <h1>count1: {count1}</h1>
+        <h1>count2: {count2}</h1>
+      </div>
+      <Form />
+
+      <button
+        onClick={() => {
+          toggleShow(showComponent ? false : true);
+        }}
+      >
+        Click for toggle
+      </button>
+      {showComponent ? <New /> : null}
     </div>
   );
 }
