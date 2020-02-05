@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import "./App.css";
 import Form from "./Form";
 import New from "./New";
+import Guage from "./Guage";
 
 function App() {
   // const [count, setCount] = useState(10);
 
-  const [count1, setCount1] = useState(0);
-  const [count2, setCount2] = useState(0);
+  const [count1, setCount1] = useState(1);
+  const [count2, setCount2] = useState(1);
   const [showComponent, toggleShow] = useState(true);
 
   return (
@@ -15,7 +16,9 @@ function App() {
       <div className="App">
         <button
           onClick={() => {
-            setCount1(count1 + 1);
+            if (count1 != 3) {
+              setCount1(count1 + 1);
+            }
             setCount2(count2 + 2);
           }}
         >
@@ -23,17 +26,19 @@ function App() {
         </button>
         <h1>count1: {count1}</h1>
         <h1>count2: {count2}</h1>
-      </div>
-      <Form />
 
-      <button
-        onClick={() => {
-          toggleShow(showComponent ? false : true);
-        }}
-      >
-        Click for toggle
-      </button>
-      {showComponent ? <New /> : null}
+        <Form />
+        <button
+          onClick={() => {
+            toggleShow(showComponent ? false : true);
+          }}
+        >
+          Click for toggle
+        </button>
+        {showComponent ? <New /> : null}
+
+        <Guage percent={count1 * 0.1} />
+      </div>
     </div>
   );
 }
